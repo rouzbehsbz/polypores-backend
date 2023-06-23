@@ -6,9 +6,15 @@ type UpdatePlayerPositionInputPort = {
     movementKeyCode: PlayerMovementKeyCode
 }
 
-interface IUpdatePlayerPositionUseCase extends UseCase<UpdatePlayerPositionInputPort, undefined> {}
+type UpdatePlayerPositionOutputPort = boolean;
+
+interface IUpdatePlayerPositionUseCase extends UseCase<
+    UpdatePlayerPositionInputPort,
+    UpdatePlayerPositionOutputPort
+> {}
 
 export default IUpdatePlayerPositionUseCase;
 export type {
-    UpdatePlayerPositionInputPort
+    UpdatePlayerPositionInputPort,
+    UpdatePlayerPositionOutputPort
 }
