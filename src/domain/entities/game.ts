@@ -1,16 +1,18 @@
+import { injectable } from "inversify";
 import GameConfig from "../../configuration/game-config";
 import Entity from "../common/abstractions/entity";
 import { Optional } from "../common/types";
 import IGamePlayersRepository from "../interfaces/repositories/game-players-repository-interface";
 import Player from "./player";
 
+@injectable()
 class Game extends Entity implements IGamePlayersRepository {
     private readonly tickrate = GameConfig.TICKRATE;
 
     private realtimePlayers: Map<string, Player>;
     private tickratedPlayers: Map<string, Player>;
 
-    private constructor() {
+    constructor() {
         super();
 
         this.realtimePlayers = new Map();
