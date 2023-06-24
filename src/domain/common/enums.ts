@@ -5,6 +5,11 @@ enum PlayerMovementKeyCode {
     LEFT
 }
 
+enum GameWorldEntities {
+    PLAYERS
+}
+
 export {
-    PlayerMovementKeyCode
+    PlayerMovementKeyCode,
+    GameWorldEntities
 }
