@@ -31,7 +31,7 @@ class Game extends Entity implements IGamePlayersRepository {
         }, this.tickrate)
     }
 
-    async addOrUpdatePlayer(player: Player): Promise<void> {
+    async addPlayer(player: Player): Promise<void> {
         this.realtimePlayers.set(player.id, player);
     }
 
