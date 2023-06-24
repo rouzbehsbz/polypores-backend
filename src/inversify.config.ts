@@ -9,6 +9,10 @@ import { TYPE, interfaces } from 'inversify-socket-utils';
 import MessageController from './presenter/websocket/controllers/message-controller';
 import PlayerDITokens from './domain/di/player-di-tokens';
 import GameDITokens from './domain/di/game-di-tokens';
+import PlayerJoinGameUseCase from './domain/use-cases/player-join-game-use-case';
+import IPlayerJoinGameUseCase from './domain/interfaces/use-cases/player-join-game-use-case-interface';
+import IPlayerLeaveGameUseCase from './domain/interfaces/use-cases/player-leave-game-use-case-interface';
+import PlayerLeaveGameUseCase from './domain/use-cases/player-leave-game-use-case';
 
 const container = new Container();
 
@@ -18,5 +22,7 @@ container.bind<IGamePlayersRepository>(GameDITokens.gamePlayersRepository).to(Ga
 
 container.bind<IUpdatePlayerPositionUseCase>(PlayerDITokens.updatePlayerPositionUseCase).to(UpdatePlayerPositionUseCase);
 container.bind<IGetPlayersInViewUseCase>(GameDITokens.getPlayersInViewUseCase).to(GetPlayersInViewUseCase);
+container.bind<IPlayerJoinGameUseCase>(GameDITokens.playerJoinGameUseCase).to(PlayerJoinGameUseCase);
+container.bind<IPlayerLeaveGameUseCase>(GameDITokens.playerLeaveGameUseCase).to(PlayerLeaveGameUseCase);
 
 export default container;
