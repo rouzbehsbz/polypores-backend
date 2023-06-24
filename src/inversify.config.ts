@@ -12,11 +12,11 @@ import GameDITokens from './domain/di/game-di-tokens';
 
 const container = new Container();
 
+container.bind<interfaces.Controller>(TYPE.Controller).to(MessageController);
+
 container.bind<IGamePlayersRepository>(GameDITokens.gamePlayersRepository).to(Game).inSingletonScope();
 
 container.bind<IUpdatePlayerPositionUseCase>(PlayerDITokens.updatePlayerPositionUseCase).to(UpdatePlayerPositionUseCase);
 container.bind<IGetPlayersInViewUseCase>(GameDITokens.getPlayersInViewUseCase).to(GetPlayersInViewUseCase);
-
-container.bind<interfaces.Controller>(TYPE.Controller).to(MessageController);
 
 export default container;

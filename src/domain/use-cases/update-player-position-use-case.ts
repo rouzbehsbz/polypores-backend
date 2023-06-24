@@ -9,7 +9,7 @@ class UpdatePlayerPositionUseCase implements IUpdatePlayerPositionUseCase {
     private gamePlayersRepository: IGamePlayersRepository;
 
     constructor(
-        @inject(GameDITokens.getPlayersInViewUseCase) gamePlayersRepository: IGamePlayersRepository
+        @inject(GameDITokens.gamePlayersRepository) gamePlayersRepository: IGamePlayersRepository
     ) {
         this.gamePlayersRepository = gamePlayersRepository
     }

@@ -1,14 +1,14 @@
 import { inject, injectable } from "inversify";
 import IGamePlayersRepository from "../interfaces/repositories/game-players-repository-interface";
 import IGetPlayersInViewUseCase, { GetPlayersInViewInputPort, GetPlayersInViewOutputPort } from "../interfaces/use-cases/get-players-in-view-use-case-interface";
-import PlayerDITokens from "../di/player-di-tokens";
+import GameDITokens from "../di/game-di-tokens";
 
 @injectable()
 class GetPlayersInViewUseCase implements IGetPlayersInViewUseCase {
     private gamePlayersRepository: IGamePlayersRepository;
 
     constructor(
-        @inject(PlayerDITokens.updatePlayerPositionUseCase) gamePlayersRepository: IGamePlayersRepository
+        @inject(GameDITokens.gamePlayersRepository) gamePlayersRepository: IGamePlayersRepository
     ) {
         this.gamePlayersRepository = gamePlayersRepository;
     }

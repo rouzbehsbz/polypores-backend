@@ -1,4 +1,4 @@
-import { connectedSocket, controller, onConnect, onMessage, payload } from "inversify-socket-utils";
+import { connectedSocket, controller, onMessage, payload } from "inversify-socket-utils";
 import { Socket } from "socket.io";
 import { UpdatePlayerPositionRequest } from "./dto/update-player-position-dto";
 import IUpdatePlayerPositionUseCase from "../../../domain/interfaces/use-cases/update-player-position-use-case-interface";
