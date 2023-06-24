@@ -3,7 +3,7 @@ import IGamePlayersRepository from "../interfaces/repositories/game-players-repo
 import IGetPlayersInViewUseCase, { GetPlayersInViewInputPort, GetPlayersInViewOutputPort } from "../interfaces/use-cases/get-players-in-view-use-case-interface";
 
 @injectable()
-class GetPlayerInViewUseCase implements IGetPlayersInViewUseCase {
+class GetPlayersInViewUseCase implements IGetPlayersInViewUseCase {
     private gamePlayersRepository: IGamePlayersRepository;
 
     constructor(
@@ -37,4 +37,4 @@ class GetPlayerInViewUseCase implements IGetPlayersInViewUseCase {
     }
 }
 
-export default GetPlayerInViewUseCase;
+export default GetPlayersInViewUseCase;
