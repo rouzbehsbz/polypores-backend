@@ -1,6 +1,8 @@
+import { injectable } from "inversify";
 import IGamePlayersRepository from "../interfaces/repositories/game-players-repository-interface";
 import IGetPlayersInViewUseCase, { GetPlayersInViewInputPort, GetPlayersInViewOutputPort } from "../interfaces/use-cases/get-players-in-view-use-case-interface";
 
+@injectable()
 class GetPlayerInViewUseCase implements IGetPlayersInViewUseCase {
     private gamePlayersRepository: IGamePlayersRepository;
 
