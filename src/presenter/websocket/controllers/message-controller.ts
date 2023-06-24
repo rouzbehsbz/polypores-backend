@@ -2,12 +2,13 @@ import { connectedSocket, controller, onConnect, onMessage, payload } from "inve
 import { Socket } from "socket.io";
 import { UpdatePlayerPositionRequest } from "./dto/update-player-position-dto";
 import IUpdatePlayerPositionUseCase from "../../../domain/interfaces/use-cases/update-player-position-use-case-interface";
-import { inject } from "inversify";
+import { inject, injectable } from "inversify";
 import PlayerDITokens from "../../../domain/di/player-di-tokens";
 import { GetPlayersInViewRequest } from "./dto/get-players-in-view-dto";
 import IGetPlayersInViewUseCase from "../../../domain/interfaces/use-cases/get-players-in-view-use-case-interface";
 import GameDITokens from "../../../domain/di/game-di-tokens";
 
+@injectable()
 @controller('/')
 class MessageController {
     private updatePlayerUseCase: IUpdatePlayerPositionUseCase;

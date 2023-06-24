@@ -1,14 +1,15 @@
 import { PlayerMovementKeyCode } from "../common/enums";
+import GameDITokens from "../di/game-di-tokens";
 import IGamePlayersRepository from "../interfaces/repositories/game-players-repository-interface";
 import IUpdatePlayerPositionUseCase, { UpdatePlayerPositionInputPort, UpdatePlayerPositionOutputPort } from "../interfaces/use-cases/update-player-position-use-case-interface";
-import {injectable} from 'inversify';
+import {inject, injectable} from 'inversify';
 
 @injectable()
 class UpdatePlayerPositionUseCase implements IUpdatePlayerPositionUseCase {
     private gamePlayersRepository: IGamePlayersRepository;
 
     constructor(
-        gamePlayersRepository: IGamePlayersRepository
+        @inject(GameDITokens.getPlayersInViewUseCase) gamePlayersRepository: IGamePlayersRepository
     ) {
         this.gamePlayersRepository = gamePlayersRepository
     }
