@@ -1,35 +1,50 @@
 import GameConfig from "../../configuration/game-config";
 import Entity from "../common/abstractions/entity";
-import { GameWorldEntities } from "../common/enums";
 import { Optional } from "../common/types";
 import IGamePlayersRepository from "../interfaces/repositories/game-players-repository-interface";
 import Player from "./player";
 
 class Game extends Entity implements IGamePlayersRepository {
     private readonly tickrate = GameConfig.TICKRATE;
-    
-    private players: Map<string, Player>;
-    private world: Map<GameWorldEntities, Entity>;
 
-    constructor() {
+    private realtimePlayers: Map<string, Player>;
+    private tickratedPlayers: Map<string, Player>;
+
+    private constructor() {
         super();
 
-        this.players = new Map();
-        this.world = new Map();
+        this.realtimePlayers = new Map();
+        this.tickratedPlayers = new Map();
     }
 
-    private gameLoop() {
+    static new() {
+        const game = new Game();
+
+        game.startGameLoop();
+
+        return game;
+    }
+
+    private startGameLoop() {
         setInterval(() => {
-            
+            this.tickratedPlayers = this.realtimePlayers;
         }, this.tickrate)
     }
 
-    getAllPlayers(): Promise<Player[]> {
-        throw new Error('Need to implement this');
+    async addOrUpdatePlayer(player: Player): Promise<void> {
+        this.realtimePlayers.set(player.id, player);
     }
 
-    getPlayerById(id: string): Promise<Optional<Player>> {
-        throw new Error('Need to implement this');
+    async deletePlayer(player: Player): Promise<void> {
+        this.realtimePlayers.delete(player.id);
+    }
+
+    async getAllPlayers(): Promise<Player[]> {
+        return Array.from(this.tickratedPlayers.values());
+    }
+
+    async getPlayerById(id: string): Promise<Optional<Player>> {
+        return this.realtimePlayers.get(id);
     }
 }
 
