@@ -14,6 +14,14 @@ class PlayerLeaveGameUseCase implements IPlayerLeaveGameUseCase {
     }
     
     async execute(input: PlayerLeaveGameInputPort): Promise<boolean> {
+        const player = await this.gamePlayersRepository.getRealtimePlayerById(input.playerId);
+
+        if(!player) {
+            return false;
+        }
+
+        await this.gamePlayersRepository.deleteRealtimePlayer(player);
+        
         return true;
     }
 }

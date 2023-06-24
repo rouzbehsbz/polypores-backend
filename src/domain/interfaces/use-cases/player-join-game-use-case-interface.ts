@@ -2,7 +2,7 @@ import UseCase from "../../common/abstractions/use-case";
 
 type PlayerJoinGameInputPort = {
     playerId: string,
-    name: string
+    playerName: string
 }
 
 type PlayerJoinGameOutputPort = boolean
