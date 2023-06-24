@@ -1,9 +1,9 @@
 import { PlayerMovementKeyCode } from "../../../../domain/common/enums"
 
-interface UpdatePlayerPositionRequest {
+interface UpdatePlayerPositionRequestDto {
     movementKeyCode: PlayerMovementKeyCode
 }
 
 export {
-    UpdatePlayerPositionRequest
+    UpdatePlayerPositionRequestDto
 }

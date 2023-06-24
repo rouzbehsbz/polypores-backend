@@ -1,4 +1,4 @@
-interface GetPlayersInViewRequest {
+interface GetPlayersInViewRequestDto {
     originX: number,
     originY: number,
     width: number,
@@ -6,5 +6,5 @@ interface GetPlayersInViewRequest {
 }
 
 export {
-    GetPlayersInViewRequest
+    GetPlayersInViewRequestDto
 }
