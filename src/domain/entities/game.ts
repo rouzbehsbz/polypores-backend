@@ -31,19 +31,19 @@ class Game extends Entity implements IGamePlayersRepository {
         }, this.tickrate)
     }
 
-    async addPlayer(player: Player): Promise<void> {
+    async addRealtimePlayer(player: Player): Promise<void> {
         this.realtimePlayers.set(player.id, player);
     }
 
-    async deletePlayer(player: Player): Promise<void> {
+    async deleteRealtimePlayer(player: Player): Promise<void> {
         this.realtimePlayers.delete(player.id);
     }
 
-    async getAllPlayers(): Promise<Player[]> {
+    async getAllTickratedPlayers(): Promise<Player[]> {
         return Array.from(this.tickratedPlayers.values());
     }
 
-    async getPlayerById(id: string): Promise<Optional<Player>> {
+    async getRealtimePlayerById(id: string): Promise<Optional<Player>> {
         return this.realtimePlayers.get(id);
     }
 }

@@ -13,7 +13,7 @@ class GetPlayersInViewUseCase implements IGetPlayersInViewUseCase {
     }
 
     async execute(input: GetPlayersInViewInputPort): Promise<GetPlayersInViewOutputPort> {
-        const players = await this.gamePlayersRepository.getAllPlayers();
+        const players = await this.gamePlayersRepository.getAllTickratedPlayers();
 
         let playersInView: GetPlayersInViewOutputPort = [];
 

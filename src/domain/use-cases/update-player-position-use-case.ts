@@ -14,7 +14,7 @@ class UpdatePlayerPositionUseCase implements IUpdatePlayerPositionUseCase {
     }
 
     async execute(input: UpdatePlayerPositionInputPort): Promise<UpdatePlayerPositionOutputPort> {
-        const player = await this.gamePlayersRepository.getPlayerById(input.playerId);
+        const player = await this.gamePlayersRepository.getRealtimePlayerById(input.playerId);
 
         if(!player) {
             return false;
